@@ -1,0 +1,53 @@
+# [START swagger]
+swagger: "2.0"
+info:
+  title: "Agro Sapezal API"
+  description: "API to Agro Sapezal App"
+  version: "1.0.0"
+# This field will be replaced by the deploy_api.sh script.
+host: "agrosapezal-api.appspot.com"
+# basePath: "/v1"
+# [END swagger]
+consumes:
+- "application/json"
+produces:
+- "application/json"
+
+x-google-endpoints:
+- name: "agrosapezal-api.appspot.com"
+  allowCors: true
+
+schemes:
+  - "https"
+  - "http"
+paths:
+  "/productByBarCode/{barcode}":
+    get:
+      description: "Get product informations by barcadoe."
+      operationId: "getProductByName"
+      produces:
+      - "application/json"
+      parameters:
+        - in: path
+          name: barcode
+          required: true
+          type: string
+          minimum: 1
+          description: product barcode.
+      responses:
+        200:
+          description: "Success."
+          schema:
+            type: "object"
+
+  "/getAllProducts":
+    get:
+      description: "Get all products"
+      operationId: "getAllProducts"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Success."
+          schema:
+            type: "object"
